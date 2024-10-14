@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
 import defaultImage1 from '../asset/image.png';
-
 
 class Navbar extends Component {
     constructor(props) {
@@ -21,7 +19,7 @@ class Navbar extends Component {
             <nav className="navbar navbar-expand-lg navbar-dark" style={{ background: 'linear-gradient(90deg, #1e3c72, #2a5298)', padding: '0.5rem 1rem' }}>
                 <Link className="navbar-brand" to="/" style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#fff' }}>
                     <img src={defaultImage1} alt="NewsHub" height="30" className="d-inline-block align-top mr-2" />
-                    NewsHub
+                    NewsDuniya
                 </Link>
                 <button 
                     className="navbar-toggler" 
@@ -36,7 +34,7 @@ class Navbar extends Component {
 
                 <div className={`${this.state.isCollapsed ? 'collapse' : ''} navbar-collapse`} id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        {['Home', 'Business', 'Entertainment', 'General', 'Health', 'Science', 'Sports', 'Technology'].map((category, index) => (
+                        {['Business', 'Entertainment', 'General', 'Health', 'Science', 'Sports', 'Technology'].map((category, index) => (
                             <li className="nav-item" key={index}>
                                 <Link 
                                     className="nav-link" 

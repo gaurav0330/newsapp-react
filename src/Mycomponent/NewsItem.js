@@ -1,56 +1,43 @@
-import React, { Component } from 'react';
-import defaultImage from '../asset/image.png';
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarAlt, faUser, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import './NewsItem.css'; 
 
-export default class NewsItem extends Component {
-  render() {
-    const { title, description, imgurl, newsUrl, author, publishedAt } = this.props;
-    const formattedDate = publishedAt ? new Date(publishedAt).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    }) : '';
+const NewsItem = (props) => {
+  const { title, description, imageUrl, newsUrl, author, date, source } = props;
 
-    return (
-      <div className="my-4">
-        <div className="card" style={{ width: '18rem', borderRadius: '10px', boxShadow: '0 4px 8px rgba(0,0,0,0.2)', height: '100%' }}>
-          <img
-            className="card-img-top"
-            src={imgurl || defaultImage}
-            alt="News"
-            style={{ height: '180px', objectFit: 'cover', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }}
-          />
-          <div className="card-body d-flex flex-column" style={{ height: '100%' }}>
-            <h5 className="card-title" style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#333' }}>
-              {title ? title.slice(0, 60) : ""}...
-            </h5>
-            <p className="card-text" style={{ fontSize: '0.9rem', color: '#555', flexGrow: 1 }}>
-              {description ? description.slice(0, 100) : ""}...
-            </p>
-            <p className="card-text" style={{ fontSize: '0.8rem', color: '#777' }}>
-              <small>
-                <strong>By:</strong> {author || "Unknown"} <br />
-                <strong>Published:</strong> {formattedDate || "N/A"}
-              </small>
-            </p>
-            <a
-              href={newsUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="btn btn-sm btn-dark"
-              style={{
-                backgroundColor: '#007BFF',
-                borderColor: '#007BFF',
-                borderRadius: '20px',
-                padding: '0.3rem 1rem',
-                transition: 'background-color 0.3s',
-                marginTop: 'auto' // Push the button to the bottom of the card
-              }}
-            >
-              Read More...
-            </a>
-          </div>
+  return (
+    <div className="card mb-4 shadow-sm h-100">
+      <div className="position-relative">
+        <img src={imageUrl || "https://via.placeholder.com/400x200?text=No+Image+Available"} 
+             className="card-img-top" alt={title} style={{height: '200px', objectFit: 'cover'}} />
+        <span className="position-absolute top-0 start-0 badge bg-danger m-2">
+          {source}
+        </span>
+      </div>
+      <div className="card-body d-flex flex-column">
+        <h5 className="card-title">{title}</h5>
+        <p className="card-text flex-grow-1">{description}</p>
+        <div className="mt-auto">
+          <p className="card-text">
+            <small className="text-muted">
+              <FontAwesomeIcon icon={faUser} className="me-1" />
+              {author || "Unknown"}
+            </small>
+          </p>
+          <p className="card-text">
+            <small className="text-muted">
+              <FontAwesomeIcon icon={faCalendarAlt} className="me-1" />
+              {new Date(date).toLocaleDateString()}
+            </small>
+          </p>
+          <a href={newsUrl} target="_blank" rel="noreferrer" className="btn btn-primary">
+            Read More <FontAwesomeIcon icon={faExternalLinkAlt} className="ms-1" />
+          </a>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default NewsItem;

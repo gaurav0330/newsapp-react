@@ -1,0 +1,79 @@
+.container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.row {
+    margin-bottom: -30px; /* Negative margin to counteract the bottom margin of columns */
+}
+
+.col-md-4 {
+    margin-bottom: 30px; /* Add space between rows */
+}
+
+/* Enhanced heading styles */
+h1.text-center {
+    margin-bottom: 30px;
+    padding: 15px 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 3px solid #3498db;
+    position: relative;
+    overflow: hidden;
+}
+
+h1.text-center::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100px;
+    height: 3px;
+    background-color: #e74c3c;
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out;
+}
+
+h1.text-center:hover::after {
+    width: 200px;
+}
+
+/* Add a subtle text shadow for depth */
+h1.text-center {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    h1.text-center {
+        font-size: 2rem;
+    }
+    
+    .col-md-4 {
+        margin-bottom: 20px; /* Slightly less space on mobile */
+    }
+}
+
+/* Style for loading and no articles messages */
+h4.text-center {
+    margin: 20px 0;
+}
+
+/* Style for "You have seen it all" message */
+p.text-center {
+    margin: 30px 0;
+    font-weight: bold;
+    color: #6c757d; /* Bootstrap's secondary text color */
+}
+
+/* Optional: Add some style to the InfiniteScroll loader */
+.infinite-scroll-component__outerdiv {
+    width: 100%;
+}
+
+.infinite-scroll-component {
+    overflow: visible !important; /* Prevents unwanted scrollbars */
+}
