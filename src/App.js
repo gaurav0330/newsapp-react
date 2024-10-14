@@ -7,7 +7,7 @@ import ErrorBoundary from './ErrorBoundary';
 
 const App = () => {
   const [progress, setProgress] = useState(0);
-  const apiKey = "645d53baf10646d78b6faced62fe1ddf";
+  const apiKey = "ADD_YOUR_OWN_API_KEY";
   return (
     <ErrorBoundary>
       <Router>
